@@ -301,20 +301,34 @@
 
 
 49. Display the name of all employees, and their bonus. Assume each Employee gets a bonus of 20 percent of his salary subject to the Maximum of Rs. 500.
+    SELECT if((0.2*salary)<500,0.2*salary,500)"bonous"
+    FROM employees;
 
 
 
 50. Display the name of all employees, and their bonus. Assume each employee gets a bonus of 20 percent of his salary subject to the Maximum of Rs. 200.
+    SELECT IF((0.2*salary)<200,0.2*salary,200)"bonous"
+    FROM employees;
 
 
 
 51. For each employee display the number of days passed since the employee joined the company.
+    SELECT datediff(curdate(),hire_date)
+    FROM employees;
+
 
 
 52. For each employee display the number of months passed since the Employee joined the company.
+    SELECT timestampdiff(month,hire_date,curdate())
+    FROM employees;
+
 
 
 53. Display the tenure of service in the years, months and days for all Employees in character format. Assume every month has 30 days.
+    SELECT FIRST_NAME, 
+    CONCAT(YEAR(FROM_DAYS(DATEDIFF(CURDATE(),HIRE_DATE))), 
+    ' YEARS ',MONTH(FROM_DAYS(DATEDIFF(CURDATE(),HIRE_DATE))), 
+
 
 
 54. Display the employee details in the following manner. 'Miler joined on the twenty-third of January of the year nineteen hundred and eighty Two'.

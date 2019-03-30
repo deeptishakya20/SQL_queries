@@ -173,9 +173,18 @@
 
 
 32. Find all employees who were hired on the last day of the month. 
+    SELECT *
+    FROM employees
+    WHERE hire_date=last_day(hire_date);
+
 
 
 33. Find the employees who were hired more than 12 years ago.
+    SELECT *
+    FROM employees
+    WHERE YEAR(hire_date)<2007
+
+
 
 34. Find the managers hired in the year 2007.
     SELECT *
@@ -185,15 +194,25 @@
 
 
 35. Display the names and the jobs of all employees, separated by ','(comma). For example (smith, clerk).
+    SELECT CONCAT( "(" , first_name, "," ,job_id, ")" ) name
+    FROM employees;
+
 
 36. Display the names of all employees with the initial letter only in capitals.
-
+    SELECT CONCAT (UCASE(SUBSTRING(first_name,1,1)),LCASE(SUBSTRING(first_name,2))) name
+    FROM employees;
 
 
 
 37. Display the names of all employees, right aligning them to 15 characters.
+    SELECT LPAD(CONCAT((first_name), " " ,last_name),15, '') name
+    FROM employees;
+
+
 
 38. Display the names of all employees, padding them to right up-to 15 characters with '-'.
+    SELECT LPAD(CONCAT((first_name), " " ,last_name),15, '-') name
+    FROM employees;
 
 
 
@@ -202,7 +221,12 @@
     from employees;
 
 
+
 40. Display the names of all employees centering them with 20 characters.
+    SELECT LPAD(RPAD(first_name, 20-(20-CHAR_LENGTH(first_name))/2, ' '),20, ' ') AS name
+    FROM employees;
+
+
 
 41. Display the names of all employees without any leading 'a'.
     SELECT first_name
@@ -254,7 +278,7 @@
 
 
 49. Display the name of all employees, and their bonus. Assume each Employee gets a bonus of 20 percent of his salary subject to the Maximum of Rs. 500.
-
-
+    SELECT CAST((salary/30) as DECIMAL(10,2)) AS per_day_salary 
+    FROM employees;
 
 

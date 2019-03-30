@@ -1,0 +1,25 @@
+
+1.   Write a query for the HR department to produce the addresses of all the departments. Use
+     the LOCATIONS and COUNTRIES tables. Show the location ID, street address, city, state     or province, and country in the output.
+
+Ans.  SELECT location_id AS LOCATION_ID, street_address AS STREET_ADDRESS, city AS CITY, state_province AS STATE_PROVINCE, countries.country_name AS COUNTRY_NAME
+      FROM locations
+      JOIN countries ON locations.country_id=countries.country_id;
+
+
+
+2.  The HR department needs a report of all employees. Write a query to display the last name,
+    department number, and department name for all the employees.
+
+Ans. SELECT last_name AS LAST_NAME , employees.department_id AS DEPARTMENT_ID , departments.department_name AS DEPARTMENT_NAME
+     FROM employees
+     JOIN departments  ON employees.department_id=departments.department_id;
+
+
+3.   Create a report to display employees’ last names and employee number along with their
+     managers’ last names and manager number. Label the columns Employee, Emp#,
+     Manager, and Mgr#, respectively. Save your SQL statement as lab_06_04.sql. Run
+     the query.
+
+
+Ans.
